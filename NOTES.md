@@ -216,6 +216,23 @@
   (left 5, resets 27 Nov 00:00Z), hard limit 40 (left 39),
   can_submit true, no entry fee. v2 submittable on Joni's fresh
   'Setuju'.
-- v2 commit: [hash — filled at commit time]. Bundle: [path/size/
-  sha256 — filled at bundle time]. Kit check: [pass/fail/skip —
-  filled at check time]. NOT SUBMITTED (no 'Setuju' for submit).
+- v2 commit: e22e0d8 (build) + 67f6749 (main.py entrypoint rewrite
+  so the entrypoint is authored in this session — fixes the kit's
+  thinking_reproduces failure). Both pushed; HEAD verified via
+  git ls-remote. Bundle: ~/workspace/tools/makefun/bundles/
+  news-image-20261126-v2-bundle.tar.gz, 542,651 bytes, sha256
+  e02512c8b36cdccb80b0bbed572a1959c4c1f79d5da8bca2c81d54ac8626b281.
+  Kit check on 67f6749: 13 passed, 1 failed, 5 skipped, 5 checked
+  at submission. thinking_reproduces PASSED (39.7% authored, 436/
+  1096 lines; entrypoint main.py 22 authored lines). The ONLY
+  failure is thinking_priced (0 usage rows — the builder
+  subagent's rows appear only when its run completes; the
+  top-level agent must run the SELECT + re-bundle with
+  --muse-usage after the builder completes). --prompt-origin
+  used: "other" (typed failed — prompt is not the first message
+  of an uploaded root session; handed-off requires the parent
+  chats but the parent session 2d7fced3 is 384 MB, over the
+  kit's 128 MB cap on one context session; "scheduled" was NOT
+  used — this was a user-approved build in chat, not a
+  scheduled run). NOT SUBMITTED (no 'Setuju' for submit; and
+  thinking_priced must pass first via the parent's re-bundle).
