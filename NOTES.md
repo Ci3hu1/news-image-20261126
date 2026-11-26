@@ -72,3 +72,150 @@
   Q3 GDP second estimate, evening wires) before entries close
   28 Nov 07:00 WIB. Read the judge's hidden reasons after the live
   score before building v2; keep what the judge praises.
+
+- Re-bundle + kit check — 26 Nov 2026 ~09:57 WIB (retry after Joni's
+  FRESH 'Lanjutkan' 09:56:20 WIB releasing the NEW execution-risk
+  block on the repo-check step, 09:55). The 09:51 'Lanjutkan' had
+  released only the 07:24 block; the retry at ~09:55 hit a NEW block
+  on the repo-check exec (git status/diff/ls) and stopped. This
+  retry ran clean — no flag hit at any step.
+  Usage file ~/.makefun/muse-usage-news-image-20261126.jsonl (0600,
+  3 rows, trailing newline; verified dedup + ascending created_at):
+  parent 51a6e27c ×2 (1795652927, 1795654018) + builder 5292c74e ×1
+  (1795653927), model ipnext/avocado-5.17-v2. Reused as-is, no
+  rebuild. __pycache__ (tests/) removed before bundling; git status
+  clean. Bundle built with --no-discover + builder session
+  (--session 5292c74e) + --parent-session (51a6e27c) + --muse-usage
+  + --prompt-file (verbatim 15 Nov standing order) + --prompt-origin
+  scheduled + --prompt-via 'scheduled 30-minute make.fun bounty
+  check run 07:24 WIB' + --mcp none --provider meta --effort
+  default. Note: kit attaches only the builder's 1 usage row (the
+  parent's 2 rows stay out — parent session not bundled, expected).
+  Bundle ~/workspace/tools/makefun/bundles/news-image-20261126-v1-bundle.tar.gz
+  (400,447 bytes, sha256
+  fac5ab309097949e430b2f01fcb4364dd2f8a237be09eccb290d09a59ac02929).
+  HEAD is now 856460b ('notes: bundle + kit check results',
+  NOTES.md-only +18 lines on top of f46f561; entry files
+  entry.png, main.py, render_poster.py, tests identical to f46f561).
+  Verified local + ls-remote HEAD = 856460bdc849ecb9e32414e14fe9a9dead02d378.
+  Kit check with --transcripts on the fresh bundle at 856460b:
+  14 passed, 0 failed, 5 skipped, 5 at-submission. Passes:
+  competition_open, snapshot, license_osi, entrypoint,
+  transcripts_present, transcripts_recorded, thinking_wellformed,
+  thinking_in_window, thinking_reproduces (94.7%: 632/667 authored),
+  thinking_turns (49), thinking_priced (1 usage record),
+  thinking_revised, transcripts_run_record, thinking_own_work.
+  At-submission (site's at submit): repo_public (verified PUBLIC),
+  repo_owner (Ci3hu1), repo_created_after_open (verified
+  2026-11-26T00:39:55Z, after opening 00:00Z), commit_in_repo
+  (verified pushed), duplicate_snapshot. Old bundle
+  ni26-bundle.tar.gz (365,430 B) kept, not deleted.
+- NOT submitted. Submit needs Joni's fresh 'Setuju' on the exact
+  entry (commit 856460b) with withhold source.
+
+- SUBMITTED — 26 Nov 2026 ~10:01 WIB (server 03:01:01Z) on Joni's
+  'Setuju, submit news-image v1' (09:59:48 WIB).
+  Submission 01a215cc-9e27-76bb-9e5d-b5dd18152f1c, title 'Blueprint
+  Atlas', repo Ci3hu1/news-image-20261126 @ commit
+  856460bdc849ecb9e32414e14fe9a9dead02d378, bundle
+  news-image-20261126-v1-bundle.tar.gz (400,447 B, sha256
+  fac5ab309097949e430b2f01fcb4364dd2f8a237be09eccb290d09a59ac02929).
+  Signed by payout wallet
+  h7aEYozd3ouRt11uqdJC8cQ42hHRckuFotiEvuJbuhE. HTTP 202 accepted.
+  Intake stage: checked. All intake checks pass (account_wallet,
+  competition_open — entries until 2026-11-28T00:00:00Z, quota,
+  form, entry_signature, repo_owner Ci3hu1, repo_public, license
+  MIT, repo_created_after_open 2026-11-26T00:39:55Z, commit_in_repo,
+  duplicate_snapshot, committed_secret, security_audit;
+  sponsor_self_entry skip — house competition). Claim saved to
+  ~/.config/makefun/news-image-20261126-submission.json (0600).
+  Source: submitted via --repo-url (standard form per
+  how_to_submit.cli). No CLI flag for withhold; source hiding is a
+  platform view property — non-owners see source_withheld: true
+  with empty repo/clone URLs by default (verified via an
+  unauthenticated fetch on a previous submission); the owner view
+  reads false. Quota at submit: entries_made 0, day cap 6 left,
+  hard limit 40 left, can_submit true, no entry fee.
+- LIVE DEV SCORE — 26 Nov 2026 ~10:03 WIB (run
+  01a215ce-22a0-753f-ba22-91d29183c3ab, status finished, dev phase):
+  win rate 951,391 (95.1391%), 90% interval 936,574–966,208,
+  9 wins / 1 draw / 2 losses in 12 matches, provisional,
+  finalist false, valid 1, passed. Artifact 559,042 B, sha256
+  add626034cd53412fed78d1d846a4f4d0f0de9317df1e6818621e9beebe9f89e.
+  Rank NOT visible in live standings yet (standings total 2,781;
+  our submission id not in the live board at check time). Phase:
+  submission, ranking_phase final. Entries close 28 Nov 00:00Z
+  (07:00 WIB). This is a dev (provisional) rate against house
+  images; the final heat judges every final entry afresh.
+- JUDGE REASONS (dev heat, model z-ai/glm-5.3-flash, 12 matches:
+  4 anchors + 8 rungs; read from GET /api/submissions/<id>,
+  scores[0].judge.heat.matches[].calls[].reason). Match points
+  (mean of 2 calls): WON 9 (M1–M4 anchors 2-0 each; M5, M7, M8,
+  M9, M11), DREW 1 (M6), LOST 2 (M10, M12 — both vs rung r2).
+  PRAISED — KEEP in any v2: names the day explicitly ('Thursday
+  26 November 2026'); 32 stories across 8 regions (breadth);
+  region count; UTC timeline; source attributions (Reuters/AP/
+  AFP); CLAIM flags + date-check box; honest about unconfirmed
+  claims. These won the anchor matches by margins 4–5 and the
+  rung matches where breadth decided.
+  PENALIZED — FIX in any v2:
+  (1) 300px LEGIBILITY (the #1 penalty, cited in every lost/drawn
+  call): the dense 32-item text list is 'unreadable at 300px' /
+  'an unreadable smear of tiny type' / 'a wall of dense list
+  text' / 'a wire dump, not a picture of the day'. Cost M5 call
+  2, M6 call 2, M9 call 2, and both calls of M10 + M12. The
+  judge contrasts it with opponents' 'clean composition...
+  legible at 300px' / 'genuine image... each with a legible
+  picture and short label'.
+  (2) SCHEMATIC MAP is a liability: 'smears with garbled labels'
+  / 'a smeared dot-glyph blob' / 'nearly formless'.
+  (3) IMPLAUSIBLE/HYPED ITEMS stated as fact (criterion 4):
+  'Iran fired 7,000+ missiles' (cited in M5, M6, M9, M10, M12),
+  'Anthropic falls below $83 IPO price' — no Anthropic IPO
+  exists (M9), 'Microsoft declares Code Red' (M3, M9),
+  'Nasdaq −20%... worst November since 2008' (M5).
+  (4) NO PICTURES: 'a text dashboard with no pictures' /
+  'essentially a wire bulletin rendered as text, with no
+  pictorial news beyond a schematic map of dots' (M9, M12).
+  V2 DIRECTION (not built — needs fresh build + fresh Setuju):
+  keep the praised elements (day, 32 stories, 8 regions, region
+  count, timeline, sources, claim flags, date check) but make it
+  READABLE at 300px (bigger panels/headlines, pictorial stories
+  with short labels instead of a 32-line text list), replace or
+  drop the smeared schematic map, and fix/remove the implausible
+  items (Iran 7,000 missiles, Anthropic IPO, Microsoft Code Red,
+  Nasdaq −20%).
+
+## v2 BUILD (26 Nov 2026 ~10:15–10:30 WIB; Joni: "Ya, bangun v2
+   news-image" 10:10:07 WIB — BUILD approval only, NOT a submit)
+
+- New render_poster.py: 2 pictorial heroes (ship; falling chart,
+  26px headlines + short decks) + 6-panel picture strip (tower,
+  storm, skyline, mine, plane, football; bold procedural Pillow
+  illustrations + short labels) + 24-item list at 20px bold in
+  32px rows (short labels ≤33 chars, 0 truncations) + UTC timeline
+  + region-count line + DATE CHECK footer. Schematic dot-map
+  REMOVED entirely (MAP_ROWS/PINS gone).
+- 3 verified replacements (all Reuters, 25 Nov): #12 Israel
+  opposition backs Oct 7 probe (replaces Iran 7,000+ missiles);
+  #29 US PCE +3.8% in Oct, core +3.3% (3-year high) (replaces
+  Anthropic IPO); #31 US Q3 GDP +4.3% (fastest in 3 years)
+  (replaces Microsoft Code Red). Hero #2 deck fixed: "Nvidia
+  −8.7% leads the slide; Nasdaq ~4% lower on tariff fear and
+  the AI rout." (the −20% / worst-November line is gone).
+- Region counts unchanged: EUROPE 6, MIDDLE EAST 6, NORTH AMERICA 5,
+  ASIA-PACIFIC 6, AFRICA 3, LATIN AMERICA 2, MARKETS & TECH 3,
+  SPORT 1 = 32. CLAIM 2 (#3 Savasleyka, #25 Niger), CONFIRMED 30.
+- Tests: 10 tests, all pass (incl. new test_no_implausible_items,
+  test_no_map, test_pictures_present). Render: 0 truncations.
+  Visual check of preview-300.png (2 rounds): masthead, heroes,
+  strip pictures and list headlines read at 300px; fixed two
+  overlaps found in round 1 (region-count line vs first list row;
+  strip 2-line labels vs source tags).
+- Quota (checked 26 Nov ~10:12 WIB): entries_made 1, day cap 6
+  (left 5, resets 27 Nov 00:00Z), hard limit 40 (left 39),
+  can_submit true, no entry fee. v2 submittable on Joni's fresh
+  'Setuju'.
+- v2 commit: [hash — filled at commit time]. Bundle: [path/size/
+  sha256 — filled at bundle time]. Kit check: [pass/fail/skip —
+  filled at check time]. NOT SUBMITTED (no 'Setuju' for submit).

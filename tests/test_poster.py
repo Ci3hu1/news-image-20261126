@@ -63,6 +63,43 @@ class TestPoster(unittest.TestCase):
         self.assertEqual(flags.count("CLAIM"), 2)
         self.assertEqual(flags.count("CONFIRMED"), 30)
 
+    def test_no_implausible_items(self):
+        """v2: the judge-flagged implausible items must be gone.
+
+        Removed: 'Iran fired 7,000+ missiles', 'Anthropic falls below
+        $83 IPO price' (no Anthropic IPO exists), 'Microsoft declares
+        Code Red', 'Nasdaq -20% ... worst November since 2008'.
+        Every v2 story is verified from a primary source.
+        (Checked against the poster data — STORIES + HERO_DECKS —
+        not the file docstring, which legitimately names what was
+        removed.)
+        """
+        import render_poster
+        for bad in ("7,000", "Anthropic", "Code Red", "−20%", "-20%",
+                    "worst November", "Worst November", "Iran fired",
+                    "IPO price"):
+            for s in render_poster.STORIES:
+                self.assertNotIn(bad, s[2])
+            for deck in render_poster.HERO_DECKS.values():
+                self.assertNotIn(bad, deck)
+
+    def test_no_map(self):
+        """v2: the schematic dot-map is removed (it smeared / garbled)."""
+        src = open(os.path.join(HERE, "render_poster.py")).read()
+        self.assertNotIn("MAP_ROWS", src)
+        self.assertNotIn("PINS", src)
+        import render_poster
+        self.assertFalse(hasattr(render_poster, "MAP_ROWS"))
+        self.assertFalse(hasattr(render_poster, "PINS"))
+
+    def test_pictures_present(self):
+        """v2: 8 procedural pictures (2 heroes + 6 strip panels)."""
+        import render_poster
+        self.assertEqual(len(render_poster.PICTURES), 8)
+        for num, name in render_poster.PICTURES.items():
+            self.assertIn(name, render_poster.ICONS)
+        self.assertEqual(sorted(render_poster.PICTURES), [1, 2, 9, 15, 18, 20, 27, 32])
+
     def test_main_copies_entry(self):
         out = os.path.join(HERE, "output-test")
         env = dict(os.environ, MAKEFUN_OUTPUT_DIR=out)
