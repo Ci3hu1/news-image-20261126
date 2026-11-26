@@ -46,6 +46,24 @@
   truncations.
 - main.py: pure stdlib, copies bundled entry.png to
   $MAKEFUN_OUTPUT_DIR/entry.png (else /output/entry.png), chmod 0644.
+- Bundle + kit check — 26 Nov 2026 ~08:45 WIB (subagent 5292c74e):
+  fresh kit downloaded 00:32 UTC (8,569,797 bytes, kit level 50).
+  Bundle ~/workspace/tools/makefun/bundles/ni26-bundle.tar.gz
+  (365,430 bytes, sha256
+  9bd3a43fe074af66e95cb1e4e1caf7ee86f468b1ba7c25cc0633e540c4ff4f04)
+  built with --no-discover + this session + --parent-session
+  (main-agent session 51a6e27c) + --mcp none + --prompt-origin
+  scheduled. Kit check with --transcripts: 13 passed, 1 failed,
+  5 skipped, 5 at-submission. Passes: competition_open, snapshot,
+  license_osi, entrypoint, transcripts_present, transcripts_recorded,
+  thinking_wellformed, thinking_in_window, thinking_reproduces
+  (94.6% authored), thinking_turns (41), thinking_revised,
+  transcripts_run_record, thinking_own_work. ONLY failure:
+  thinking_priced — 0 usage rows (Muse app sessions carry no usage;
+  EXPECTED — parent re-bundles with --muse-usage before submit, same
+  flow as NI25 v1/v2). Repo pushed: commit f46f561 on origin/main,
+  repo public, created 2026-11-26T00:39:55Z (after opening), homepage
+  + topics (makefun, ai-agents, bounties, growth) set.
 - NOT submitted. Submit needs Joni's 'Setuju' on the exact entry.
   Bundle note: this session's bundle may show 0 usage rows — the
   parent re-bundles with --muse-usage before submit (same flow as
