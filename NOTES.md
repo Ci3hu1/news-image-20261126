@@ -291,3 +291,59 @@
 - main.py rewritten in this session (os.path layout, makedirs) so
   the entrypoint is authored here — same fix as v2's 67f6749.
 - NOT SUBMITTED. v3 needs a fresh build + fresh 'Setuju' (submit).
+
+## v3 REWORK — PICTURE GRID (26 Nov 2026 ~10:50–11:05 WIB; parent task: apply the researched 300px method — BUILD only, NOT a submit)
+
+- The first v3 (22-item list at 26px, 8-panel strip, commit e1e1fdc)
+  is SUPERSEDED. Research on 300px legibility (~/workspace/tools/
+  makefun/news-image-300px-research/METHOD.md + working prototype)
+  proved only >=22px type is reliably legible at 300px (scale 0.293),
+  so NO 24-item text list can ever read there — enlarging type was
+  the wrong fix. The list is REPLACED by a picture grid.
+- v3-grid changes (layout, from the tested method):
+  1. 24-item text list GONE -> 24-card PICTURE GRID, 8 cols x 3 rows.
+     Card 115x122: a 99x66 picture (dominant, 47% of the card), a
+     20px bold amber number, a 1-line label <=14 chars at 13px bold.
+     0 truncations. At 300px the poster reads as a picture mosaic,
+     not a text wall (verified in preview-300.png vs the prototype's
+     compare-300.png). Strip back to 6 panels (#9, #15, #18, #20,
+     #27, #32); #24 Sudan and #29 PCE are grid cards (river, rise).
+  2. Timeline: TIMES ONLY at 18px bold ("10:40", "13:00", "15:30",
+     "18:00", "21:00", "23:30"), evenly spaced — no event text left
+     to overlap, so 'Saudigeized' cannot recur. The Gaza entry stays
+     "23:30 Gaza toll 1,679" in the data but is not drawn.
+  3. Region count: v2's single 13px line -> 8 CHIPS at 15px bold
+     (EUROPE 6, MIDEAST 6, N AMERICA 5, ASIA-PAC 6, AFRICA 3,
+     LATAM 2, MARKETS 3, SPORT 1).
+  4. Footer: v2's 3 lines with 12px body -> 2 lines, larger
+     (16px + 13px).
+  5. Icons: 19 total, 14 distinct across the 24 grid cards (max 3
+     repeats; the prototype had 10 distinct / max 4). Three NEW
+     icons: burst (airbase strike #3, Hamas chief #10), car (Qatar
+     GP #14), home (Gaza family #11). Gavel + flag drawn BOLDER than
+     the prototype (thick amber gavel head + 7px handle; solid
+     rectangular flag, not a thin triangle). Every picture carries
+     its story's specific number in amber (as in the first v3).
+- BUG FOUND + FIXED in the visual check: the plane's "10%", chart's
+  "−4%"/"AI" and storm's "NYC" were drawn on EVERY reuse of those
+  icons — so grid cards #7/#13/#22 (planes), #17/#19 (charts) and
+  #16 (storm) carried numbers belonging to a different story. Fix:
+  the number is now a `tag` parameter passed only at the hero/strip
+  call sites (HERO_TAGS {2: "−4%"}, STRIP_TAGS {15: "NYC",
+  27: "10%"}); the grid call passes no tag. Test
+  test_no_misleading_icon_numbers asserts this.
+- Also fixed: the tower's "385m" overlapped the drone at the
+  top-right of the strip panel — moved to the top-left (the drone
+  sits top-right).
+- Kept (praised in v2): explicit day, 32 stories / 8 regions, UTC
+  timeline, per-story sources, CLAIM flags (2) + DATE CHECK box,
+  blueprint layout, verified stories, map gone. 30 CONFIRMED, 2 CLAIM.
+- Tests: 17/17 pass (incl. 7 new/rewritten v3-grid tests:
+  picture-grid, no-timeline-overlaps (times only), gaza-label-clean,
+  region-chips, icons-distinctive (19 icons), no-misleading-
+  icon-numbers, footer-two-lines). Render: 0 truncations. Visual
+  check of preview-300.png (3 rounds): masthead + heroes + strip +
+  6 large amber times + 8 chips + 24-card mosaic + footer all read
+  at 300px; no dense text wall; fixed the misleading icon numbers
+  (round 2) and the tower/drone overlap (round 3).
+- NOT SUBMITTED. v3-grid needs a fresh 'Setuju' (submit).

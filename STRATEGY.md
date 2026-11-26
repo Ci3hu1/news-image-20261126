@@ -70,8 +70,8 @@ flags. Distinct from the near-identical cream newspaper front pages
 dominating the field, from NI24's navy night-desk atlas and NI25's
 daylight wire desk. Structure: masthead (32 stories / 8 regions) →
 2 lead heroes with pictures (tariffs; Nasdaq) → 6-panel picture strip
-→ 6-event UTC timeline + 8-region count line → 24 stories in 2
-columns at 20px → DATE CHECK footer.
+→ UTC timeline (times only) + 8-region chips → 24-card picture grid
+(8×3) → DATE CHECK footer.
 
 ## One specific detail no other entry has
 
@@ -101,7 +101,11 @@ panel states this window — it does not claim every wire was dated
 
 - 41–46 stories (NI25's count): rejected — at 1024px, 30+ grid rows
   force micro-text that fails the 300px gate. 32 stories split across
-  heroes + strip + a 24-item list at 20px is the v2 sweet spot.
+  heroes + strip + a 24-card picture grid is the v3 sweet spot.
+- Enlarging the text list (v3's first attempt: 22 items at 26px):
+  rejected — research proved only >=22px type is legible at 300px,
+  so a 24-item text list can never read there; the list is replaced
+  by picture cards, not enlarged.
 - A literal world map outline: rejected — a schematic dot-map reads
   cleaner at 300px and cannot be faulted for coastline errors.
   (v2: even the schematic map is dropped — the judge smeared it.)
@@ -125,17 +129,22 @@ the competition page at v1 build time), so v2's job is a higher
 win rate in the live dev matches; entries close 28 Nov 07:00 WIB,
 results 12 Dec 2026.
 
-## v3 result (built 26 Nov 2026 ~10:45 WIB; Joni: "Ya, bangun v3 news-image")
+## v3 result (built 26 Nov 2026 ~11:00 WIB; Joni: "Ya, bangun v3 news-image")
 
 v2 scored live dev 972,121 (97.2121%, 12W/0D/0L) — it beat v1, but
 the judge's 2 dissenting calls were still the list legibility
 (24 items at 20px) plus timeline garbles and generic icons. v3
-is a targeted refinement, not a rebuild: the praised structure is
-unchanged (masthead → 2 heroes → picture strip → timeline →
-list → DATE CHECK), but the list is 22 items at 26px in 38px rows
-(+30% type, +19% row spacing, labels ≤24 chars), the strip is
-8 panels (Sudan + PCE move into pictures), the timeline is 5
-events at 13px with measured non-overlapping labels, and every
-icon carries its story's specific number. Target: beat v2's
-972,121 by flipping the 2 dissenting calls. v3 is a BUILD only
-(not submitted without a fresh 'Setuju').
+applies the researched 300px method (METHOD.md in
+news-image-300px-research/): the dense text list cannot be fixed by
+enlarging type, so it is REPLACED by a 24-card picture grid (8×3) —
+each story a bold picture + a 20px amber number + a 1-line label.
+The timeline shows times only at 18px bold (no event text left to
+overlap), the region count is 8 chips at 15px bold, the footer is
+2 lines (16px + 13px), and 19 icons (14 distinct in the grid, max
+3 repeats) replace the prototype's 10 — with burst / car / home
+added and gavel + flag drawn bolder. A first v3 (22-item list at
+26px, 8-panel strip) was built, tested and committed (e1e1fdc) and
+then superseded by this grid version — the list approach was
+abandoned on the research evidence, not on a judge score. Target:
+beat v2's 972,121 by flipping the 2 dissenting calls. v3 is a BUILD
+only (not submitted without a fresh 'Setuju').

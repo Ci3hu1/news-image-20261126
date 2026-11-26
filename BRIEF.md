@@ -29,7 +29,7 @@ Region counts: EUROPE 6 · MIDDLE EAST 6 · NORTH AMERICA 5 ·
 ASIA-PACIFIC 6 · AFRICA 3 · LATIN AMERICA 2 · MARKETS & TECH 3 ·
 SPORT 1 = 32 stories, 8 regions. 30 CONFIRMED, 2 CLAIM.
 Heroes: #1 (tariffs) and #2 (Nasdaq). Picture strip: #9, #15, #18,
-#20, #27, #32. List: the other 24.
+#20, #27, #32. Picture grid: the other 24 (8 cols × 3 rows).
 
 ### HEROES
 1. US proposes tariffs on 14 partners — Section 301 probe; China faces
@@ -162,29 +162,39 @@ big hero panels (tariffs; Nasdaq), each with a procedural picture
 (ship; falling chart) + a 26px headline + a short deck; a 6-panel
 picture strip (tower, storm, skyline, mine, plane, football), each a
 bold procedural illustration + a short label + number + source; a
-6-event UTC timeline + an 8-region count line; 24 stories in 2
-columns at 20px with number chips + source/CLAIM tags; a DATE CHECK
+6-event UTC timeline + an 8-region count as chips; 24 stories as a
+picture grid (8 cols × 3 rows, each card a bold procedural picture +
+a 20px amber number + a 1-line label); a DATE CHECK
 box that states the coverage window and agrees with the masthead;
 sources per story (Reuters / AP / AFP wires only). The schematic
 dot-map is REMOVED (v1's map smeared with garbled labels).
 
-## 300px legibility gate (v2 — the #1 fix)
+## 300px legibility gate (v3 — the #1 fix, researched method)
 
-v1's dense 32-line micro-list was "unreadable at 300px". v2
-restructures instead of shrinking: the 32 stories are split across
-2 pictorial heroes + a 6-panel picture strip + a 24-item list at
-20px bold (32px rows) with short labels (≤33 chars, no truncation —
-the renderer reports any truncation and the test fails on it).
-Masthead, both hero headlines, the picture strip, the list headlines,
-region counts and the DATE CHECK must all read at 300px wide —
-checked in preview-300.png.
+v1's dense 32-line micro-list was "unreadable at 300px". v2 split
+the stories across 2 heroes + a 6-panel strip + a 24-item list at
+20px — but the list STILL read as a dense text wall ("wire dump")
+and cost the 2 dissenting calls. Research (~/workspace/tools/makefun/
+news-image-300px-research/METHOD.md, tested prototype) found only
+>=22px type is reliably legible at 300px (scale 0.293), so no text
+list of 24 items can ever read there. v3 replaces the list with a
+24-card PICTURE GRID (8×3, card 115×122): a 99×66 picture (the
+dominant element) + a 20px bold amber number + a 1-line label of
+<=14 chars at 13px bold. At 300px the poster reads as a mosaic of
+pictures, not a wall of text. The timeline shows TIMES ONLY at 18px
+bold (no event labels, so nothing can overlap); the region count is
+8 chips at 15px bold; the footer is 2 lines (16px + 13px). Masthead,
+both hero headlines, the picture strip, the timeline times, the
+region chips, the grid numbers + pictures, and the DATE CHECK must
+all read at 300px wide — checked in preview-300.png.
 
 ## Files
 
 - render_poster.py — draws entry.png from the STORIES table in this
-  file's data (pure Pillow; DejaVu fonts from the system). 8 procedural
+  file's data (pure Pillow; DejaVu fonts from the system). 19 procedural
   picture functions (ship, chart, storm, tower, ball, mine, plane,
-  skyline) in the blueprint palette.
+  skyline, river, rise, flag, gavel, globe, bar, factory, ballot,
+  burst, car, home) in the blueprint palette.
 - main.py — pure stdlib: copies bundled entry.png to
   $MAKEFUN_OUTPUT_DIR/entry.png (else /output/entry.png), chmod 0644.
 - entry.png — the rendered poster (1024×1024, ≤1 MiB).
@@ -207,28 +217,49 @@ checked in preview-300.png.
 v2 (submission 01a215e9) scored live dev 972,121 (97.2121%, 12W/0D/0L).
 The judge's remaining penalties, fixed in v3:
 1. The 24-item list is STILL too dense at 300px (cost the 2 dissenting
-   calls). v3: 22 items at 26px bold in 38px rows, short labels
-   (<=24 chars, 0 truncations); 2 stories move to the picture strip
-   (#24 Sudan Blue Nile, #29 US PCE) so the strip is 8 panels.
+   calls). Research proved no text list of 24 items can read at 300px
+   (only >=22px type is legible there). v3 REPLACES the list with a
+   24-card PICTURE GRID (8×3, card 115×122): a 99×66 picture (the
+   dominant element) + a 20px bold amber number + a 1-line label of
+   <=14 chars at 13px bold, 0 truncations. The strip stays 6 panels
+   (#9, #15, #18, #20, #27, #32); #24 Sudan and #29 PCE are grid
+   cards (river and rise icons). At 300px the poster reads as a
+   picture mosaic, not a text wall (verified in preview-300.png).
 2. Timeline garbles: v2's 6 labels at 11px crowded ('Lille stun Bayern'
-   overlapping the Gaza label; 'Gaza toll [?],679'). v3: 5 events at
-   13px, evenly spaced, measured label boxes (gaps 33–59px, all inside
-   the canvas); the Gaza label is now "23:30 Gaza toll 1,679" (no
-   em-dash, no colon after 'toll').
-3. 'Icons are generic' / 'reads as a wire dump': every picture now
-   carries its story's specific number in amber (ship 14 + %, chart
-   −4% + AI, tower 385m, storm NYC, skyline CHEN, mine 100m, river
-   19, plane 10%, rise +3.8%, ball 2-1). Two new icons: river (Blue
-   Nile dam, #24) and rise (rising bars + upward arrow, #29 PCE —
-   the mirror of the Nasdaq chart, so the two markets pictures read
-   as opposites).
+   overlapping the Gaza label; 'Gaza toll [?],679'). v3 shows TIMES
+   ONLY at 18px bold ("10:40", "13:00", "15:30", "18:00", "21:00",
+   "23:30"), evenly spaced — there is no event text left to overlap.
+   The Gaza entry stays "23:30 Gaza toll 1,679" (no em-dash, no colon
+   after 'toll') in the data, but it is not drawn on the timeline.
+3. 'Icons are generic' / 'reads as a wire dump': 19 icons total, 14
+   distinct across the 24 grid cards (max 3 repeats; the research
+   prototype had 10 distinct / max 4). Three NEW icons: burst (airbase
+   strike #3, Hamas chief #10), car (Qatar GP #14), home (Gaza family
+   #11). Gavel + flag drawn BOLDER than the prototype (thick amber
+   gavel head + 7px handle; solid rectangular flag, not a thin
+   triangle). Every picture carries its story's specific number in
+   amber (ship 14 + %, chart −4% + AI, tower 385m, storm NYC, skyline
+   CHEN, mine 100m, river 19, plane 10%, rise +3.8%, ball 2-1) — and
+   a number drawn ON an icon belongs to ONE story only: the plane's
+   "10%", chart's "−4%"/"AI" and storm's "NYC" are passed as a tag
+   only at the hero/strip call sites, never in the grid (so #7/#13/#22
+   planes, #17/#19 charts and #16 storm carry no misleading number).
+   The tower's "385m" moved to the top-left so it no longer overlaps
+   the drone.
+4. Region count: v2's single 13px line was a 3.8px smear. v3 uses 8
+   chips at 15px bold (EUROPE 6, MIDEAST 6, N AMERICA 5, ASIA-PAC 6,
+   AFRICA 3, LATAM 2, MARKETS 3, SPORT 1).
+5. Footer: v2's 3 lines with 12px body text was a smear. v3 uses 2
+   lines, larger (16px + 13px).
 Kept (praised in v2): explicit day, 32 stories / 8 regions, UTC
 timeline, per-story sources, CLAIM flags (2) + DATE CHECK box,
 blueprint layout, verified stories, map gone. Region counts
 unchanged. 30 CONFIRMED, 2 CLAIM.
-Layout (1024px): masthead 24–112, heroes 118–268 (150px), strip
-274–408 (134px, 8 × 115px panels), timeline 414–485 (5 events +
-region-count line, 15px clear of the list), list 500–918 (22 items,
-11 rows × 38px, 26px), footer 932–1000 (DATE CHECK). Tests: 14,
-all pass (incl. new list-legibility, no-timeline-overlaps,
-gaza-label-clean, icons-distinctive tests). Render: 0 truncations.
+Layout (1024px): masthead 24–116, heroes 118–278 (160px), strip
+288–438 (150px, 6 panels), timeline 446–506 (times only, 18px),
+region chips 506–528 (8 chips, 15px), grid 534–916 (24 cards, 8×3,
+115×122), footer 928–1000 (DATE CHECK, 2 lines). Tests: 17,
+all pass (incl. new picture-grid, no-timeline-overlaps,
+gaza-label-clean, region-chips, icons-distinctive,
+no-misleading-icon-numbers, footer-two-lines tests). Render:
+0 truncations.
