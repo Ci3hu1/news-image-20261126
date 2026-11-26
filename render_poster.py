@@ -640,19 +640,21 @@ def render():
         d.line([(0, y), (W, y)], fill=GRID)
 
     # ---- masthead ------------------------------------------------------
-    d.rectangle([M, M, W - M, 116], outline=WHITE, width=2)
-    d.line([(M, 110), (W - M, 110)], fill=WHITE, width=1)
-    d.text((M + 14, 30), "THE BLUEPRINT", font=F_TITLE(58), fill=WHITE)
-    d.text((M + 16, 88), "WORLD NEWS  ·  ONE IMAGE  ·  THURSDAY 26 NOVEMBER 2026",
+    # Shifted up 12px (Joni 26 Nov 11:07: bottom-row text was cut off)
+    # so the footer gains bottom margin; top margin is now 12px.
+    d.rectangle([M, 12, W - M, 104], outline=WHITE, width=2)
+    d.line([(M, 98), (W - M, 98)], fill=WHITE, width=1)
+    d.text((M + 14, 18), "THE BLUEPRINT", font=F_TITLE(58), fill=WHITE)
+    d.text((M + 16, 76), "WORLD NEWS  ·  ONE IMAGE  ·  THURSDAY 26 NOVEMBER 2026",
            font=F_TITLE(17), fill=AMBER)
-    d.text((W - M - 14, 32), "32", font=F_TITLE(52), fill=AMBER, anchor="ra")
-    d.text((W - M - 84, 44), "STORIES", font=F_TITLE(16), fill=WHITE, anchor="ra")
-    d.text((W - M - 84, 64), "8 REGIONS", font=F_TITLE(16), fill=CYAN, anchor="ra")
-    d.text((W - M - 14, 88), "ALL VERIFIED · REUTERS / AP / AFP",
+    d.text((W - M - 14, 20), "32", font=F_TITLE(52), fill=AMBER, anchor="ra")
+    d.text((W - M - 84, 32), "STORIES", font=F_TITLE(16), fill=WHITE, anchor="ra")
+    d.text((W - M - 84, 52), "8 REGIONS", font=F_TITLE(16), fill=CYAN, anchor="ra")
+    d.text((W - M - 14, 76), "ALL VERIFIED · REUTERS / AP / AFP",
            font=F_BODY(12), fill=DIM, anchor="ra")
 
     # ---- heroes (picture + big headline) -------------------------------
-    hy, hh = 118, 160
+    hy, hh = 106, 160
     hw = (W - 2 * M - 16) // 2
     for i, s in enumerate(STORIES[:2]):
         num, region, head, src, flag = s
@@ -682,7 +684,7 @@ def render():
         d.text((x0 + hw - 14, hy + 5), src, font=F_TITLE(12), fill=WHITE, anchor="ra")
 
     # ---- picture strip (6 panels) ---------------------------------------
-    sy, sh = 288, 150
+    sy, sh = 276, 150
     sw = (W - 2 * M - 5 * 8) // 6
     strip_nums = [9, 15, 18, 20, 27, 32]
     by_num = {s[0]: s for s in STORIES}
@@ -710,7 +712,7 @@ def render():
     # v2's 11px "10:40 — Sudan strikes" labels overlapped into
     # "Saudigeized" and the Gaza label garbled. Times only, 18px bold,
     # evenly spaced — there is no event text left to overlap.
-    ty = 446
+    ty = 434
     d.text((M, ty), "THE DAY IN UTC — WED 25 NOV → THU 26 NOV",
            font=F_TITLE(12), fill=WHITE)
     d.line([(M, ty + 30), (W - M, ty + 30)], fill=PANEL_LINE, width=2)
@@ -734,7 +736,7 @@ def render():
     # procedural illustration + a large amber number + a 1-line label.
     # At 300px the grid reads as a mosaic of pictures, not a wall of
     # text. Story count and regions are unchanged (32 / 8).
-    gy = 534
+    gy = 522
     cw, ch = GRID_CARD_W, GRID_CARD_H
     for idx, num in enumerate(LIST_NUMS):
         _, region, head, src, flag = by_num[num]
@@ -754,16 +756,22 @@ def render():
         # No number tag: the card label below carries this story's number.
         ix, iy, iw, ih = x0 + 8, y0 + 28, GRID_PIC_W, GRID_PIC_H
         ICONS[GRID_ICONS[num]](d, ix, iy, iw, ih)
-        # short label, 1 line, centred below the picture
+        # short label, 1 line, centred below the picture.
+        # Raised 9px (y0+ch-24, was y0+ch-15): the bottom-row labels'
+        # descenders (Niger 'g', Ramaphosa 'p', guilty 'g') touched
+        # the card border at 300px and read as cut off.
         lab = fit(d, GRID_LABELS[num], F_TITLE(13), cw - 12)
-        d.text((x0 + cw // 2, y0 + ch - 15), lab, font=F_TITLE(13),
+        d.text((x0 + cw // 2, y0 + ch - 24), lab, font=F_TITLE(13),
                fill=WHITE, anchor="ma")
 
     # ---- footer: date check (2 lines, larger) ---------------------------
     # v2's 3-line footer with 12px body text was a smear at 300px.
     # Two lines, larger, is enough — the detail lives in BRIEF.md.
-    fy = 928
-    d.rectangle([M, fy, W - M, H - M], outline=AMBER, width=2)
+    # Moved up 12px (fy 928 -> 916) and the box now ends at fy+72
+    # (was H-M): bottom margin below the footer is 36px, and the
+    # bottom-most text (line 2) clears the image edge by ~63px.
+    fy = 916
+    d.rectangle([M, fy, W - M, fy + 72], outline=AMBER, width=2)
     d.rectangle([M, fy, M + 148, fy + 26], fill=AMBER)
     d.text((M + 8, fy + 5), "✓  DATE CHECK", font=F_TITLE(14), fill=DARK)
     d.text((M + 158, fy + 5),
@@ -780,7 +788,14 @@ def main():
     here = os.path.dirname(os.path.abspath(__file__))
     img = render()
     img.save(os.path.join(here, "entry.png"), "PNG", optimize=True)
+    # 300px preview: LANCZOS downscale, then UnsharpMask so the
+    # thumbnail reads sharp (Joni 26 Nov 11:08: 'pertajam image 300px').
+    # Without it the downscale blurs the small text/icons. Radius 1
+    # (features are 1-2px at this size), percent 130, threshold 2
+    # (keeps flat areas clean, no halo).
     small = img.resize((300, 300), Image.LANCZOS)
+    small = small.filter(ImageFilter.UnsharpMask(radius=1, percent=130,
+                                                 threshold=2))
     small.save(os.path.join(here, "preview-300.png"), "PNG", optimize=True)
     print("truncations:", len(TRUNCATIONS))
     for t in TRUNCATIONS:

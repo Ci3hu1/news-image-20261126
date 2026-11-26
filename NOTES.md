@@ -347,3 +347,24 @@
   at 300px; no dense text wall; fixed the misleading icon numbers
   (round 2) and the tower/drone overlap (round 3).
 - NOT SUBMITTED. v3-grid needs a fresh 'Setuju' (submit).
+
+## v3 RE-BUNDLE + KIT CHECK (26 Nov 2026 ~11:00 WIB; parent re-bundle after builder 4712075c completed)
+
+- Usage file ~/.makefun/muse-usage-news-image-20261126-v3.jsonl (0600, 2 rows, trailing newline): v3 builder 4712075c (created_at 1795665475, model ipnext/avocado-5.17-v2, input 13,603,864 / output 130,605) + v2 builder 1b282d54 (created_at 1795663501, input 7,842,168 / output 90,189). Dedup by (agent_id, message_id), ascending created_at.
+- Correction to the brief: --parent-session does NOT bundle a session (dry-run showed only 1 session, usage attached 1 / no_session 1). The builder's bundle carried both sessions as explicit --session files (manifest: collected_by explicit, 2). Re-bundled with TWO --session flags (v3 builder file + v2 builder file) + --no-discover + --muse-usage + --prompt-file (verbatim 15 Nov standing order) + --prompt-origin other + --prompt-via 'parent agent handoff for user-approved v3 build (Joni: Ya, bangun v3 news-image, 26 Nov 10:39 WIB)' + --mcp none --provider meta --effort default. No --parent-session (main-chat parent 2d7fced3 is 384 MB, over the kit's 128 MB cap). Dry-run confirmed both sessions (v3: 99 turns, 377 lines, 1 usage row; v2: 63 turns, 263 lines, 1 usage row) and usage attached 2 / no_session 0. No __pycache__ to remove. No execution-risk flag hit.
+- New bundle: ~/workspace/tools/makefun/bundles/news-image-20261126-v3-bundle.tar.gz, 1,039,946 B, sha256 360740a7b4a3488cd31d00649e12f321ab05622bf8fab278a5e77eb78ea3952a (overwrites builder's 1,031,124 B bundle, sha256 54a57431...).
+- Kit check on the fresh bundle at 3a9e347: 14 passed, 0 failed, 5 skipped, 5 checked at submission. thinking_priced PASS (2 usage records, each priced to a known model — the builder's 1 fail, now fixed). thinking_reproduces PASS (55.3%: 939 authored / 1696 lines; entrypoint main.py 23 authored lines). transcripts_present PASS (2 sessions). thinking_wellformed PASS (389 messages). thinking_in_window PASS. thinking_turns PASS (144). thinking_revised PASS. transcripts_run_record PASS. thinking_own_work PASS.
+- HEAD verified: local = remote = 3a9e347888ae0306dc563786901bbdfc3a2e6845.
+- CLEAN — ready to present to Joni for a fresh 'Setuju' (submit). NOT SUBMITTED yet.
+
+## v3 FIX — bottom-row text cut off + sharpen 300px (26 Nov 2026 ~11:07-11:15 WIB; Joni feedback)
+
+- Joni 11:07:08 WIB: 'Tulisan bagian image baris paling bawah tulisannya terpotong naikkan agak ke atas' (bottom-row text cut off, move it up). Joni 11:08:13 WIB: 'Pertajam juga image nya yang 300px' (sharpen the 300px version too).
+- Diagnosis (measured): grid bottom-row card labels sat at y0+ch-15, leaving only ~2px below the 13px text — descenders (Niger 'g', Ramaphosa 'p', guilty 'g') touched the card border and read as cut off at 300px. Footer line 2 sat at fy+32=960 with the footer box ending at H-M=1000 (24px bottom margin), so the bottom-most text read as sitting on the image edge.
+- Fix (render_poster.py):
+  * Grid labels raised 9px inside their cards: y0+ch-15 -> y0+ch-24 (11px clear of the card bottom for the 13px label). Bottom-row labels moved up 21px total vs v3.
+  * Whole layout shifted up 12px (masthead 24->12 top, heroes 118->106, strip 288->276, timeline 446->434, chips 506->494 via ty+60, grid 534->522, footer 928->916). All internal gaps preserved (2/10/8/4/6/12px). Footer box now ends at fy+72=988 (was H-M=1000): bottom margin below the footer is 36px (was 24px); footer line 2 clears the image bottom edge by ~63px (was ~51px).
+  * Sharpening: preview-300.png now LANCZOS + UnsharpMask(radius=1, percent=130, threshold=2) in main(). The 1024px entry.png keeps its existing UnsharpMask(radius=2, percent=150, threshold=3) from render(). Laplacian variance at 300px: 13,067 (LANCZOS only) -> 33,956 (LANCZOS+USM), 2.6x sharper. Visual check of the 300px masthead at 3x zoom: crisp, no halo artifacts.
+- Tests: 18/18 pass (17 existing + 1 new test_bottom_text_clearance: asserts the grid label offset is y0+ch-24 and the footer box bottom border sits <= y=990 by pixel scan, i.e. >= 34px clear of the 1024 edge). Render: 0 truncations.
+- Visual check: full size + 300px — bottom-row grid labels now sit clearly inside their cards, footer line 2 fully visible, footer box well clear of the bottom edge, no overlaps, no clipping, no halo artifacts.
+- NOT SUBMITTED. Needs a fresh 'Setuju' (submit) after this fix.

@@ -231,6 +231,38 @@ class TestPoster(unittest.TestCase):
         self.assertIn("tag=HERO_TAGS.get(num)", src)
         self.assertIn("tag=STRIP_TAGS.get(num)", src)
 
+    def test_bottom_text_clearance(self):
+        """v3 fix (Joni 26 Nov 11:07): the bottom-row text was cut off.
+
+        The grid bottom-row labels' descenders (Niger 'g', Ramaphosa
+        'p', guilty 'g') touched the card border — the label sat at
+        y0+ch-15, leaving only ~2px below the 13px text. Fix: the
+        label is raised to y0+ch-24 (11px clear of the card bottom).
+        The whole layout also shifted up 12px so the footer box
+        bottom clears the 1024 edge by >= 30px.
+        """
+        src = open(os.path.join(HERE, "render_poster.py")).read()
+        self.assertIn("y0 + ch - 24", src)
+        self.assertNotIn("y0 + ch - 15", src)
+        # footer box bottom border (amber/yellow, spans the width)
+        # must sit well clear of the image bottom edge
+        from PIL import Image
+        im = Image.open(os.path.join(HERE, "entry.png")).convert("RGB")
+        px = im.load()
+        bottom = None
+        for y in range(900, 1024):
+            count = 0
+            for x in range(0, 1024, 4):
+                r, g, b = px[x, y]
+                if r > 200 and g > 150 and b < 120:
+                    count += 1
+            if count > 100:
+                bottom = y
+        self.assertIsNotNone(bottom, "footer box bottom border not found")
+        self.assertLessEqual(bottom, 990,
+                             f"footer box bottom at y={bottom}, "
+                             "too close to the 1024 edge")
+
     def test_footer_two_lines(self):
         """v3 (300px method): the footer is 2 lines, larger (16px +
         13px), not v2's 3 lines with 12px body text (a smear)."""
