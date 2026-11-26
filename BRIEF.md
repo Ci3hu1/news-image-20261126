@@ -263,3 +263,46 @@ all pass (incl. new picture-grid, no-timeline-overlaps,
 gaza-label-clean, region-chips, icons-distinctive,
 no-misleading-icon-numbers, footer-two-lines tests). Render:
 0 truncations.
+
+## v4 (26 Nov 2026 ~11:35 WIB; Joni: "Ya, bangun v4 — fewer, larger,
+   photographic panels" 11:35:01 WIB — BUILD only)
+
+v3 (submission 01a21618) scored live dev 933,364 (93.3364%, 6W/4D/2L) —
+WORSE than v2's 972,121 (12W/0D/0L). The judge still called the 32-tile
+grid illegible at 300px ('dense dashboard', 'most tiles collapse to
+generic repeated icons', 'labels too small to read', cryptic one-word
+labels 'Savasleyka', 'DTek hit', 'CHEN' that 'look garbled') and
+rewarded FEWER, LARGER, CLEARER stories — the adaptive opponents (4–6
+story photographic entries) 'read cleanly', 'each story is clear from
+its picture', 'legible even small'. v4 applies that direction:
+1. SIX large panels (2 cols x 3 rows, each 484x230), not 24 small
+   tiles and not a dense list. Each panel: a big procedural picture
+   (190x180, the dominant element) on the left + a FULL-SENTENCE
+   headline at 24px bold (up to 3 lines) + a 16px deck (2 lines) +
+   a 36px amber key stat on the right. No tiny labels, no one-word
+   cryptic labels.
+2. Six DIFFERENT icons (ship, chart, tower, burst, mine, storm) —
+   no repeats, so no icon reads as a generic pictogram. The other
+   13 v3 icons are deleted. In-icon text is size-aware (itext):
+   it scales with the 190x180 picture height.
+3. The six panels are the strongest, most pictorial verified
+   stories: #1 tariffs (ship, +20%), #2 Nasdaq (chart, −8.7%),
+   #9 Riyadh tower (tower, 2nd hit), #3 Savasleyka (burst, 5 jets,
+   CLAIM), #20 mine flood (mine, 9 dead), #15 Macy's parade
+   (storm, 100 yrs). Each panel's key stat is a DIFFERENT number
+   from any number baked into its picture (#2 picture '−4%' vs
+   stat '−8.7%'; #9 picture '385m' vs stat '2nd hit').
+4. Honest breadth: the masthead says "6 LEAD STORIES / FROM 32 ·
+   8 REGIONS" (not 32 — only six are pictured) and the footer says
+   "Selected from 32 verified stories · 8 regions". The region
+   chips are dropped (counts summing to 32 would be inconsistent
+   with six panels shown).
+Kept (praised in v2/v3): explicit day, UTC timeline (times only,
+18px), per-story sources, CLAIM flags (1 in v4: #3) + DATE CHECK
+box, blueprint layout, verified stories, map gone. Layout (1024px):
+masthead 12–104, timeline 112–172 (times only), panels 180–886
+(2x3, 484x230, gap 8), footer 894–966 (DATE CHECK, 2 lines, 58px
+clear of the bottom edge). Tests: 20, all pass (incl. new
+six-large-panels, panels-distinct-icons, headlines-full-sentences,
+key-stats-distinct, no-grid, masthead-six-stories tests). Render:
+0 truncations.
