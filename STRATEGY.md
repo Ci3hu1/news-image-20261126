@@ -124,3 +124,18 @@ the judge praised. The field is large (478 submissions counted on
 the competition page at v1 build time), so v2's job is a higher
 win rate in the live dev matches; entries close 28 Nov 07:00 WIB,
 results 12 Dec 2026.
+
+## v3 result (built 26 Nov 2026 ~10:45 WIB; Joni: "Ya, bangun v3 news-image")
+
+v2 scored live dev 972,121 (97.2121%, 12W/0D/0L) — it beat v1, but
+the judge's 2 dissenting calls were still the list legibility
+(24 items at 20px) plus timeline garbles and generic icons. v3
+is a targeted refinement, not a rebuild: the praised structure is
+unchanged (masthead → 2 heroes → picture strip → timeline →
+list → DATE CHECK), but the list is 22 items at 26px in 38px rows
+(+30% type, +19% row spacing, labels ≤24 chars), the strip is
+8 panels (Sudan + PCE move into pictures), the timeline is 5
+events at 13px with measured non-overlapping labels, and every
+icon carries its story's specific number. Target: beat v2's
+972,121 by flipping the 2 dissenting calls. v3 is a BUILD only
+(not submitted without a fresh 'Setuju').

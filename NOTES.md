@@ -236,3 +236,58 @@
   used — this was a user-approved build in chat, not a
   scheduled run). NOT SUBMITTED (no 'Setuju' for submit; and
   thinking_priced must pass first via the parent's re-bundle).
+
+- Re-bundle + kit check — 26 Nov 2026 ~10:27 WIB (parent re-bundle after builder 1b282d54 completed):
+  Usage file ~/.makefun/muse-usage-news-image-20261126-v2.jsonl (0600, 1 row: builder 1b282d54, created_at 1795663501, model ipnext/avocado-5.17-v2, input 7,842,168 / output 90,189). Re-bundle with --no-discover + builder session file (--session <session file>, 63 turns, 263 lines kept) + --muse-usage + --prompt-file (verbatim 15 Nov standing order) + --prompt-origin other + --prompt-via 'parent agent handoff for user-approved v2 build (Joni: Ya, bangun v2 news-image, 26 Nov 10:10 WIB)' + --mcp none --provider meta --effort default. No --parent-session (parent 2d7fced3 is 384 MB, over the kit's 128 MB cap). No execution-risk flag hit.
+  New bundle: ~/workspace/tools/makefun/bundles/news-image-20261126-v2-bundle.tar.gz, 550,028 B, sha256 5bc6e87b57bd32446fe44fc48fffe83090887c38b0a420188e7a7c507796e909 (overwrites builder's 542,651 B bundle, sha256 e02512c8...).
+  Kit check with --transcripts on the fresh bundle at e77b336: 14 passed, 0 failed, 5 skipped, 5 checked at submission. thinking_priced PASS (1 usage record). thinking_reproduces PASS (40.7%: 453 authored / 1113 lines; entrypoint main.py 22 authored lines). transcripts_present PASS. thinking_revised PASS. transcripts_run_record PASS. thinking_wellformed / thinking_in_window / thinking_turns (58) / thinking_own_work PASS.
+  HEAD verified via git ls-remote: e77b336f1c32ae201d1a36987d33087f45ea8296 (local + remote match). CLEAN — ready to present to Joni for a fresh 'Setuju' (submit). NOT SUBMITTED yet.
+
+- v2 SUBMITTED — 26 Nov 2026 ~10:32 WIB (Joni: 'Setuju, submit v2 news-image', 10:30:21 WIB):
+  Submission id 01a215e9-5af7-72ab-9551-1de539f46128, stage checked (all intake pass), title 'Blueprint Atlas v2', commit e77b336f1c32ae201d1a36987d33087f45ea8296, repo Ci3hu1/news-image-20261126, bundle 550,028 B (sha256 5bc6e87b57bd32446fe44fc48fffe83090887c38b0a420188e7a7c507796e909), payout wallet h7aEYozd3ouRt11uqdJC8cQ42hHRckuFotiEvuJbuhE. Receipt server_time 2026-11-26T03:32:24.433Z.
+  Claim saved to ~/.config/makefun/news-image-20261126-v2-submission.json (0600). v1 claim file (~/.config/makefun/news-image-20261126-submission.json, 0600, 03:01) untouched.
+  Live dev score (run 01a215ea-68ca-74ee-b16e-bf5ab53d911d, finished): 972,121 (97.2121%), 90% interval 962,447-981,795, 12 wins / 0 draws / 0 losses in 12 matches, provisional, valid 1. Judge z-ai/glm-5.3-flash, heat verdict 'v2', invalid_calls 0. (v1 was 951,391 / 95.1391%, 9W/1D/2L.) Rank not visible in live board (field 3,044; board shows top 10 only).
+  Judge reasons (dev heat, 12 matches: 4 anchors + 8 rungs; all 24 calls read; 22/24 for us, 2 dissenting):
+  - Praised — KEEP: day named explicitly (Thu 26 Nov 2026), 32 stories across 8 regions, UTC timeline, sources (Reuters/AP/AFP), CLAIM flags + date-check box, honest about unconfirmed claims; breadth wins decisively in every rung match; blueprint layout cleanly rendered, readable panels; implausible items gone (verified wire stories); map gone. Anchor matches won by margins 4-5; rung matches by margins 2-3.
+  - Penalized — still the 300px legibility of the dense 24-item list (cost the 2 dissenting calls: M7 call 0 and M8 call 1). Specific garbles: timeline text overlaps ('Saudigeized', 'Lille stun Bayern' overlapping); one garbled label ('Gaza toll [?],679'); 'icons are generic' / 'reads as a wire dump' in the dissenting calls. But v2 still won ALL 12 matches (12-0) — breadth dominates.
+  - v2 is now the live entry (round 2). Entries close 28 Nov 07:00 WIB. Final heat judges every final entry afresh.
+
+## v3 BUILD (26 Nov 2026 ~10:40–10:50 WIB; Joni: "Ya, bangun v3 news-image" 10:39:28 WIB — BUILD approval only, NOT a submit)
+
+- v2 live dev 972,121 (97.2121%, 12W/0D/0L). Judge's remaining
+  penalties (2 dissenting calls, M7 call 0 + M8 call 1): (1) the
+  dense 24-item list STILL too small at 300px; (2) timeline garbles
+  ('Saudigeized', 'Lille stun Bayern' overlapping; 'Gaza toll
+  [?],679'); (3) 'icons are generic' / 'reads as a wire dump'.
+- v3 changes (targeted refinement, structure kept):
+  1. List: 24 items -> 22 items at 26px bold in 38px rows (v2: 20px
+     in 32px rows), short labels <=24 chars, 0 truncations. 2 stories
+     move to the strip (#24 Sudan Blue Nile, #29 US PCE) so the strip
+     is 8 panels (115px each).
+  2. Timeline: 6 events -> 5 events at 13px (v2: 11px), evenly
+     spaced across the full inner width; label boxes measured
+     (gaps 33-59px, first x0 49, last x1 980 — all inside margins,
+     no overlap). Gaza label is now "23:30 Gaza toll 1,679" (no
+     em-dash, no colon after 'toll'). Region-count line moved to
+     ty+58 so it sits 15px clear of the list (v2's 3px crowding
+     fixed after a round-1 visual check).
+  3. Icons: every picture now carries its story's specific number
+     in amber (ship 14 + %, chart -4% + AI, tower 385m, storm NYC,
+     skyline CHEN, mine 100m, river 19, plane 10%, rise +3.8%,
+     ball 2-1). Two new icons: river (Blue Nile dam, #24) and rise
+     (rising bars + upward arrow, #29 PCE — the mirror of the
+     Nasdaq chart). Strip labels widened (sw-6) so "Macy's parade"
+     fits whole on line 1.
+- Kept (praised in v2): explicit day, 32 stories / 8 regions,
+  UTC timeline, per-story sources, CLAIM flags (2: #3 Savasleyka,
+  #25 Niger) + DATE CHECK box, blueprint layout, verified stories,
+  map gone. Region counts unchanged. 30 CONFIRMED, 2 CLAIM.
+- Tests: 14/14 pass (incl. 4 new v3 tests: list-legibility,
+  no-timeline-overlaps, gaza-label-clean, icons-distinctive).
+  Render: 0 truncations. Visual check of preview-300.png (2 rounds):
+  list headlines read clearly at 300px, timeline labels separated,
+  Gaza toll legible, strip icons distinctive; fixed the
+  region-count/list crowding found in round 1.
+- main.py rewritten in this session (os.path layout, makedirs) so
+  the entrypoint is authored here — same fix as v2's 67f6749.
+- NOT SUBMITTED. v3 needs a fresh build + fresh 'Setuju' (submit).

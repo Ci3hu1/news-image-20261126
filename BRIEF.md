@@ -201,3 +201,34 @@ checked in preview-300.png.
 - Malaysia sues Google $146m + North Korea–Switzerland office row:
   seen only in secondary roundups, not verified on a wire page read
   directly — held, not printed.
+
+## v3 (26 Nov 2026 ~10:45 WIB; Joni: "Ya, bangun v3 news-image" 10:39:28 WIB — BUILD only)
+
+v2 (submission 01a215e9) scored live dev 972,121 (97.2121%, 12W/0D/0L).
+The judge's remaining penalties, fixed in v3:
+1. The 24-item list is STILL too dense at 300px (cost the 2 dissenting
+   calls). v3: 22 items at 26px bold in 38px rows, short labels
+   (<=24 chars, 0 truncations); 2 stories move to the picture strip
+   (#24 Sudan Blue Nile, #29 US PCE) so the strip is 8 panels.
+2. Timeline garbles: v2's 6 labels at 11px crowded ('Lille stun Bayern'
+   overlapping the Gaza label; 'Gaza toll [?],679'). v3: 5 events at
+   13px, evenly spaced, measured label boxes (gaps 33–59px, all inside
+   the canvas); the Gaza label is now "23:30 Gaza toll 1,679" (no
+   em-dash, no colon after 'toll').
+3. 'Icons are generic' / 'reads as a wire dump': every picture now
+   carries its story's specific number in amber (ship 14 + %, chart
+   −4% + AI, tower 385m, storm NYC, skyline CHEN, mine 100m, river
+   19, plane 10%, rise +3.8%, ball 2-1). Two new icons: river (Blue
+   Nile dam, #24) and rise (rising bars + upward arrow, #29 PCE —
+   the mirror of the Nasdaq chart, so the two markets pictures read
+   as opposites).
+Kept (praised in v2): explicit day, 32 stories / 8 regions, UTC
+timeline, per-story sources, CLAIM flags (2) + DATE CHECK box,
+blueprint layout, verified stories, map gone. Region counts
+unchanged. 30 CONFIRMED, 2 CLAIM.
+Layout (1024px): masthead 24–112, heroes 118–268 (150px), strip
+274–408 (134px, 8 × 115px panels), timeline 414–485 (5 events +
+region-count line, 15px clear of the list), list 500–918 (22 items,
+11 rows × 38px, 26px), footer 932–1000 (DATE CHECK). Tests: 14,
+all pass (incl. new list-legibility, no-timeline-overlaps,
+gaza-label-clean, icons-distinctive tests). Render: 0 truncations.
