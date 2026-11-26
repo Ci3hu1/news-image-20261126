@@ -458,3 +458,63 @@
   sits clear of the big '6'.
 - NOT SUBMITTED. v4 needs a fresh 'Setuju' (submit). This is
   submission #4 of max 5 for this competition.
+
+## v4 BUNDLE + KIT CHECK (26 Nov 2026 ~11:42 WIB; v4 builder bd43960c)
+
+- Commit 837f343c1edf22183a0c48dc10cf7b0b2159c18e ('news-image-20261126
+  v4: six large photographic panels (fewer, larger, clearer)'), 7
+  files, pushed; remote HEAD = local HEAD (git ls-remote confirms
+  837f343).
+- Bundle (4 sessions: v4 builder bd43960c + fixer e1164db4 + v3
+  builder 4712075c + v2 builder 1b282d54; --no-discover; --muse-usage
+  v3-fix file, 3 rows; --prompt-file verbatim standing order;
+  --prompt-origin other; --prompt-via 'parent agent handoff for
+  user-approved v4 build (Joni: Ya, bangun v4 — fewer, larger,
+  photographic panels, 26 Nov 2026 11:35 WIB)'; --mcp none
+  --provider meta --effort default):
+  ~/workspace/tools/makefun/bundles/news-image-20261126-v4-bundle.tar.gz,
+  1,685,308 B, sha256
+  c7c644efaeed46f8a2c51a7eb4a4a78339ce769542ea2592e68b7055f4b1fb57.
+  Dry-run confirmed all 4 sessions (v2: 63 turns/263 lines/1 usage
+  row; v3: 99 turns/377 lines/1 usage row; fixer: 93 turns/343
+  lines/1 usage row; v4 builder: 40 turns/159 lines/0 usage rows).
+  Warning as expected: 0 usage rows for the v4 builder session
+  bd43960c (a subagent's row is written only when its run
+  completes) — the parent must re-bundle after this run completes
+  to attach the v4 builder row (the kit's dry-run says so
+  explicitly) and re-run the full check.
+- FULL kit check (repo @ 837f343, --transcripts = bundle):
+  14 passed, 0 failed, 5 skipped, 5 checked at submission.
+  Exit 0. thinking_priced PASS (3 usage records, each priced to a
+  known model — the v2/v3/fixer rows; the v4 builder row is
+  uncounted until the parent re-bundles). thinking_reproduces PASS
+  (58.8%: 984 authored / 1673 lines; entrypoint main.py 33 authored
+  lines). Also passed: transcripts_present (4 sessions),
+  transcripts_recorded, thinking_wellformed (706 messages, 359 tool
+  results), thinking_in_window (469 timestamps), thinking_turns
+  (262), thinking_revised (render_poster.py from 10 messages,
+  main.py from 3), transcripts_run_record, thinking_own_work,
+  competition_open, snapshot (11 files, 577,432 B), license_osi,
+  entrypoint. Skipped (5, normal): strategy_note, committed_secret
+  (no --dotenv), thinking_committed (entry not yet signed — normal
+  pre-submit), thinking_on_task, thinking_fresh. At submission (5):
+  repo_public, repo_owner, repo_created_after_open, commit_in_repo,
+  duplicate_snapshot.
+- NOT SUBMITTED. Needs a fresh 'Setuju' (submit) after the parent's
+  re-bundle. This is submission #4 of max 5 for this competition.
+
+## v4 RE-BUNDLE #2 + FULL CHECK (26 Nov 2026 ~11:45 WIB; re-bundle subagent 37354092)
+- Combined usage file: ~/.makefun/muse-usage-news-image-20261126-v4.jsonl (0600), 4 rows, ascending created_at, dedup by (agent_id, message_id), all model ipnext/avocado-5.17-v2: v2 builder 1b282d54 (1 row, in 7,842,168 / out 90,189), v3 builder 4712075c (1 row, in 13,603,864 / out 130,605), fixer e1164db4 (1 row, in 7,142,638 / out 63,367), v4 builder bd43960c (1 row, in 4,223,862 / out 56,876 — row now in DB, was 0 rows during the v4 builder's run).
+- Bundle (4 sessions: v4 builder 44 turns/172 lines, fixer 93 turns/343 lines, v3 builder 99 turns/377 lines, v2 builder 63 turns/263 lines; each 1 usage row attached, 4/4; --no-discover; --muse-usage v4 file; --prompt-file verbatim standing order; --prompt-origin other; --prompt-via 'parent agent handoff for user-approved v4 build (Joni: Ya, bangun v4 — fewer, larger, photographic panels, 26 Nov 2026 11:35 WIB)'; --mcp none --provider meta --effort default): ~/workspace/tools/makefun/bundles/news-image-20261126-v4-bundle.tar.gz, 1,692,335 B, sha256 b6d08afa4cfe7e1559688e33c6d83103ea53a65614d34d9e2154d270de1843a1. Repo HEAD 837f343 (remote HEAD same).
+- FULL kit check (repo @ 837f343, --transcripts = bundle): 14 passed, 0 failed, 5 skipped, 5 checked at submission. Exit 0. thinking_priced PASS (4 usage records, each priced to a known model). Also passed: transcripts_present (4 sessions), transcripts_recorded, thinking_wellformed (712 messages, 362 tool results), thinking_in_window (476 timestamps), thinking_reproduces (58.8% authored, ≥30%), thinking_turns (265), thinking_revised (render_poster.py from 10 messages), transcripts_run_record, thinking_own_work, competition_open, snapshot, license_osi, entrypoint. Skipped (5, normal): strategy_note, committed_secret (no --dotenv), thinking_committed (entry not yet signed — normal pre-submit), thinking_on_task, thinking_fresh. At submission (5): repo_public, repo_owner, repo_created_after_open, commit_in_repo, duplicate_snapshot. No check failed. Repo dirty only because NOTES.md is modified (not an entry file) — check ran on commit 837f343, so it does not matter.
+
+## v4 SUBMIT (26 Nov 2026 11:51:19 WIB; Joni 'Setuju, submit v4 news-image' 11:50:38 WIB)
+- Submission id: 01a21631-9b47-7537-b1f8-2e52d73b829e. Title: 'Civil Magnet' (site-generated; no --title passed). Round 4 (submission #4 of max 5). Entries close 28 Nov 07:00 WIB; results 11 Dec.
+- Commit: 837f343c1edf22183a0c48dc10cf7b0b2159c18e. Bundle 1,692,335 B, sha256 b6d08afa4cfe7e1559688e33c6d83103ea53a65614d34d9e2154d270de1843a1. Payout wallet h7aEYozd3ouRt11uqdJC8cQ42hHRckuFotiEvuJbuhE. Server time 2026-11-26T04:51:19.488Z.
+- Stage: checked (server-side checks passed; entry signature by the payout wallet, issued 2026-11-26T04:51:16.663Z).
+- Claim: saved to NEW file ~/.config/makefun/news-image-20261126-v4-submission.json (0600, claim present). v1 claim (01a215cc…), v2 claim (01a215e9…), v3 claim (01a21618…) files untouched (mtimes 03:01 / 03:32 / 04:24, mode 0600).
+- Live dev score: 962,664 (96.2664%), 9W / 1D / 2L in 12 matches (run 01a21636-ea4e-70ca-b1be-5945dbe7eb3e, finished, scores_visible true). Provisional, finalist False. SE 7,323; interval 950,619–974,709. Heat verdict 'v2'.
+- COMPARISON: v4 (962,664) BEAT v3 (933,364, 6W/4D/2L) by ~29,300 — the fewer/larger panels worked vs the 24-tile grid. But v4 did NOT beat v2 (972,121, 12W/0D/0L) — still ~9,457 below. v2 remains the best submission.
+- Judge reasons (summary): Praised (as in v2/v3): explicit day (Thu 26 Nov 2026), date check strip, six stories across regions, each labelled/sourced, UTC timeline, CLAIM flag on Ukraine, flat vector legibility, big stat callouts. Provisional anchors 0–3: all wins (margins 4–5). Adaptive rounds: W/L/W/W/W/D/W/L.
+- Penalised (the 2 losses + 1 draw): (1) Round 2 loss — opponent is "one clear composition — a globe with six labelled photo vignettes whose headlines stay legible even shrunk to ~300px"; our v4 is "an over-dense dashboard: heavy fine print, tiny captions and stats, and oddly non-sequential panel numbers (01, 02, 09, 03, 20, 15) that would become unreadable at contest scale." The original story numbers as panel numbers HURT. (2) Round 8 loss — opponent is "a clean photographic collage — each story instantly legible from picture plus short label, unified by a globe centerpiece"; our v4 is "a tidy schematic whose abstract icons (a starburst, a triangle, a cloud) convey much less at a glance." Abstract procedural icons lose to literal photographic pictures. (3) Round 6 draw — split: one call for us (opponent's 'Kane breaks England caps record' is a mid-2025 event, faithfulness fail), one call against (we are US-heavy — 3 of 6 panels North America; opponent spreads wider).
+- Lessons for a v5 (NOT built — needs a new improved version + fresh Setuju; 1 round remains, submission #5 of max 5): renumber panels 1–6 sequentially (drop the original story numbers 01/02/09/03/20/15), cut the fine print/captions, make pictures more photographic/literal (less abstract iconography), spread regions more evenly (fewer US panels). Keep: explicit day, date check, sources, CLAIM flag, UTC timeline, big stat callouts.

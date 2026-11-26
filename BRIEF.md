@@ -306,3 +306,68 @@ clear of the bottom edge). Tests: 20, all pass (incl. new
 six-large-panels, panels-distinct-icons, headlines-full-sentences,
 key-stats-distinct, no-grid, masthead-six-stories tests). Render:
 0 truncations.
+
+## v5 (26 Nov 2026 ~12:38 WIB; Joni: "Ya, bangun v5 — renumber 1–6,
+   cut fine print, more photographic" 12:38:47 WIB — BUILD only, LAST
+   round, submission #5 of max 5)
+
+v4 (submission 01a21631) scored live dev 962,664 (96.2664%, 9W/1D/2L)
+— BEAT v3's 933,364 by ~29,300 but did NOT beat v2's 972,121
+(12W/0D/0L); v2 remains best. The fewer/larger panels worked, but
+the judge docked three things in the 2 losses + 1 draw, and v5
+fixes exactly those three — nothing else moves:
+1. RENUMBER 1–6 SEQUENTIALLY (round 2 loss): v4 drew the original
+   story numbers (01/02/09/03/20/15) as panel numbers and the judge
+   called them 'oddly non-sequential ... that would become
+   unreadable at contest scale' — 'an over-dense dashboard: heavy
+   fine print, tiny captions and stats, and oddly non-sequential
+   panel numbers'. v5 drops the story numbers from the poster
+   entirely; the panels are numbered 1, 2, 3, 4, 5, 6 in reading
+   order. The story numbers live only in the data record (and in
+   the tests, which pin the mapping: panels 1–6 = stories
+   #1, #2, #9, #3, #20, #24).
+2. CUT THE FINE PRINT (round 2 loss, 'heavy fine print, tiny
+   captions and stats'): the deck is ONE short line (was 2 lines
+   in v4, 16px), the 14px cyan region label is dropped from the
+   panel header, and the smallest in-icon text is removed — the
+   chart's small 'AI' text is gone, and the ship loses the stray
+   '%' (in v4 '14' + '%' read as '14%', a number not in the
+   story). What remains per panel: a full-sentence headline (24px
+   bold) + ONE short deck line (16px) + the 36px amber key stat.
+   The source line is kept (praised: 'each labelled/sourced').
+3. MORE PHOTOGRAPHIC / LITERAL PICTURES (round 8 loss): the v4
+   opponent was 'a clean photographic collage — each story
+   instantly legible from picture plus short label'; our v4 was
+   'a tidy schematic whose abstract icons (a starburst, a
+   triangle, a cloud) convey much less at a glance'. v5 replaces
+   the two most abstract icons with literal SCENES: the burst
+   (star) becomes an airbase — a runway with white centre dashes,
+   a large jet silhouette on it (fuselage, swept wing, tail, cyan
+   canopy), a second smaller jet climbing above with a smoke
+   trail, and smoke puffs + a fireball where the bombs fell; the
+   storm (cloud) is dropped with the Macy's panel and the new
+   panel 6 is a dam — a blue reservoir at the top, a white dam
+   wall with vertical joints and cyan spillway streaks, and a blue
+   river with wave lines at the bottom. The ship gains a gantry
+   crane (legs + beam + hook over the containers); the tower's
+   starburst becomes a smoke plume + fireball on the tower face.
+   The mine's shaft (invisible in v4: DARK fill on the DARK
+   panel) now has a cyan outline so it reads as a mine entrance.
+   Six panels, six distinct literal scenes (ship, chart, tower,
+   airbase, mine, river) — no repeats, no abstract icons.
+4. REGION SPREAD (round 6 draw): v4 was US-heavy — 3 of 6 panels
+   North America. v5 replaces the Macy's parade panel (#15,
+   NORTH AMERICA) with the Sudan drone strikes in Blue Nile
+   (#24, AFRICA, river/dam picture, 19 dead) — the strongest
+   verified story from another region that can be pictured
+   literally. Six panels across 5 regions: NORTH AMERICA 2,
+   MIDDLE EAST 1, EUROPE 1, ASIA-PACIFIC 1, AFRICA 1.
+Kept (praised in v2/v3/v4): explicit day, UTC timeline (times
+only, 18px), per-story sources, CLAIM flag (1: #3 Savasleyka on
+panel 4) + DATE CHECK box, blueprint layout, verified stories,
+map gone, masthead "6 LEAD STORIES / FROM 32 · 8 REGIONS".
+Layout (1024px): masthead 12–104, timeline 112–172 (times only),
+panels 180–886 (2x3, 484x230, gap 8), footer 894–966 (DATE CHECK,
+2 lines, 58px clear of the bottom edge). Tests: 23, all pass
+(incl. new sequential-panel-numbers, no-fine-print,
+region-spread tests). Render: 0 truncations.
